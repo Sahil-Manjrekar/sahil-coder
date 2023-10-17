@@ -1,0 +1,39 @@
+# Create an empty dictionary to store expenses by category
+expenses = {}
+
+# Function to add an expense
+def add_expense(category, amount):
+    if category in expenses:
+        expenses[category] += amount
+    else:
+        expenses[category] = amount
+
+# Function to view expense summary
+def view_expense_summary():
+    print("\nExpense Summary:")
+    total_spending = 0
+    for category, amount in expenses.items():
+        print(f"{category}: ${amount:.2f}")
+        total_spending += amount
+    print(f"Total spending: ${total_spending:.2f}")
+
+while True:
+    print("\nExpense Tracker")
+    print("1. Add Expense")
+    print("2. View Expense Summary")
+    print("3. Exit")
+
+    choice = input("Enter your choice (1/2/3): ")
+
+    if choice == '1':
+        category = input("Enter expense category: ")
+        amount = float(input("Enter expense amount: $"))
+        add_expense(category, amount)
+        print(f"${amount:.2f} added to {category} expenses.")
+    elif choice == '2':
+        view_expense_summary()
+    elif choice == '3':
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please select 1, 2, or 3.")
